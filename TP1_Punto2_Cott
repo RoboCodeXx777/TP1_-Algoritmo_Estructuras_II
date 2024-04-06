@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+// Función para encontrar el mayor número y contar su ocurrencia
+void encontrarMayor(int n) {
+    int mayor, contador, numero, i;
+
+    // Inicializamos el contador de ocurrencias en 0
+    contador = 0;
+
+    // Pedimos el primer número
+    printf("Ingrese el número 1: ");
+    scanf("%d", &numero);
+
+    // Asignamos el primer número como el mayor
+    mayor = numero;
+
+    // Comparamos el primer número con los siguientes 9 números
+    for (i = 2; i <= n; i++) {
+        // Pedimos el siguiente número
+        printf("Ingrese el número %d: ", i);
+        scanf("%d", &numero);
+
+        // Si el número ingresado es mayor que el actual mayor, actualizamos el mayor y reseteamos el contador
+        if (numero > mayor) {
+            mayor = numero;
+            contador = 1; // Reiniciamos el contador
+        } else if (numero == mayor) {
+            contador++; // Incrementamos el contador si encontramos otro número igual al mayor
+        }
+    }
+
+    // Mostramos el resultado
+    printf("\nEl mayor número ingresado es: %d\n", mayor);
+    printf("Se repitió %d veces.\n", contador);
+}
+
+int main() {
+    encontrarMayor(10); // Llamamos a la función para encontrar el mayor entre 10 números
+    return 0;
+}
