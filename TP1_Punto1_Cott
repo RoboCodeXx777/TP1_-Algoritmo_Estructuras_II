@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+// Definición de la función para encontrar el máximo
+int encontrarMaximo(int numeros[], int tamaño) {
+  int maximo = numeros[0]; // Inicializamos el máximo con el primer número
+  for(int i = 1; i < tamaño; i++) {
+    if(numeros[i] > maximo) {
+      maximo = numeros[i]; // Actualizamos el máximo si encontramos un número mayor
+    }
+  }
+  return maximo; // Devolvemos el máximo encontrado
+}
+
+// Definicion de la función para contar cuántas veces se repite un número
+
+int contarRepeticiones(int numeros[], int tamaño, int numero) {
+int contador = 0;
+for (int i = 0; i < tamaño; i++) {
+  if (numeros[i] == numero) {
+    contador++; // Incrementamos el contador cada vez que encontramos el número
+  }
+}
+return contador; // Devolvemos el número de repeticiones
+
+}
+
+
+int main(void) {
+
+  int numeros[10]; // Declaración del vector para almacenar los números
+  printf("Ingrese 10 numeros:\n");
+
+  // Ciclo para ingresar los 10 números
+  for (int i = 0; i < 10; i++) {
+    scanf("%d", &numeros[i]); // Leemos el número ingresado por el usuario
+  }
+
+  // Llamamos a la función encontrarMaximo para encontrar el número máximo
+  int maximo = encontrarMaximo(numeros, 10);
+  printf("El numero maximo es: %d\n", maximo);
+
+  // Llamamos a la función contarRepeticiones para contar cuántas veces se repite el número máximo
+  int repeticiones = contarRepeticiones(numeros, 10, maximo);
+  printf("Se repitio %d veces.\n", repeticiones);
+  
+  return 0;
+}
