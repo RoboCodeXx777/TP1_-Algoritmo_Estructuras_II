@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+// Función para calcular el importe de un ítem
+float calcularImporte(float precio, int cantidad) {
+    return precio * cantidad;
+}
+
+int main() {
+    int tipoFactura, cantidadItems, i;
+    int tipoMayorValor;
+    float precio, importe, mayorValor = 0, sumaImportes = 0, promedioImporte;
+    char articulo[50];
+
+    // Paso a: Ingresar el tipo de factura
+    printf("Ingrese el tipo de factura (1: Responsable Inscripto, 2: Consumidor Final, 3: Bienes y Servicios): ");
+    scanf("%d", &tipoFactura);
+
+    // Paso b: Ingresar la cantidad de ítems
+    printf("Ingrese la cantidad de ítems en la factura: ");
+    scanf("%d", &cantidadItems);
+
+    // Paso c: Ingresar los ítems
+    for (i = 1; i <= cantidadItems; i++) {
+        printf("Ítem %d:\n", i);
+        printf("Ingrese el nombre del artículo: ");
+        scanf("%s", articulo);
+        printf("Ingrese el precio del artículo: ");
+        scanf("%f", &precio);
+        printf("Ingrese la cantidad del artículo: ");
+        int cantidad; // Corrección: Declaración de la variable cantidad
+        scanf("%d", &cantidad);
+        importe = calcularImporte(precio, cantidad);
+        sumaImportes += importe;
+
+        // Verificar si este ítem tiene el mayor valor
+        if (importe > mayorValor) {
+            mayorValor = importe;
+            tipoMayorValor = i;
+        }
+    }
+
+    // Paso d: Mostrar el ítem de mayor valor
+    printf("\nEl ítem de mayor valor es:\n");
+    printf("Ítem: %d\n", tipoMayorValor);
+    printf("Precio: %.2f\n", mayorValor / cantidadItems); // Corrección: Se utiliza cantidadItems en lugar de cantidad
+    printf("Cantidad: %d\n", cantidadItems);
+    printf("Importe: %.2f\n", mayorValor);
+
+    // Paso e: Calcular el promedio de importe
+    promedioImporte = sumaImportes / cantidadItems;
+    printf("\nEl promedio de importe de los ítems es: %.2f\n", promedioImporte);
+
+    return 0;
+}
